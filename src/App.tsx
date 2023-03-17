@@ -4,7 +4,8 @@ import {DataGridRowsTypes} from 'globalTypes';
 
 import {
     Container,
-    Box
+    Box,
+    Skeleton
 } from '@mui/material';
 
 import {MoviesButton} from 'components/MoviesButton';
@@ -17,15 +18,20 @@ export const columnsMap: GridColDef[] = [
         disableColumnMenu: true,
         sortable: false,
         renderCell: (params) =>
-            <Box
-                src={params.value}
-                component="img"
-                sx={{
-                    height: '100%',
-                    width: '100%',
-                }}
-                alt={'movie poster'}
-            />
+            (params.value && params.value !== 'N/A')
+                ? <Box
+                    src={params.value}
+                    component="img"
+                    sx={{
+                        height: '100%',
+                        width: '100%',
+                    }}
+                    alt={'movie poster'}
+                />
+                : <Skeleton
+                    height={'100%'}
+                    width={'100%'}
+                />
     },
     { field: 'title', headerName: 'Title', width: 500 },
     { field: 'type', headerName: 'Type', width: 85 },
