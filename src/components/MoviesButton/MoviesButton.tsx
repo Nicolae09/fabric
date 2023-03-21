@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './MoviesButton.scss';
 import {MoviesButtonTypes, MoviesResponse} from './MoviesButton.types';
 import {MoviesTypes, DataGridRowsTypes} from 'globalTypes';
@@ -10,7 +10,11 @@ import {
 } from '@mui/material';
 
 export default function MoviesButton({setRows}: MoviesButtonTypes) {
+    const [isFetchingMovies, setIsFetchingMovies] = useState(false);
+
     const handleButtonClick = async ({currentTarget: {dataset: {moviename}}}:  React.MouseEvent<HTMLButtonElement>) => {
+        setIsFetchingMovies(true);
+
         try {
             const {
                 Response,
@@ -25,7 +29,9 @@ export default function MoviesButton({setRows}: MoviesButtonTypes) {
             ));
 
             if (generatedRows.length) setRows(generatedRows);
+            setIsFetchingMovies(false);
         } catch (err) {
+            setIsFetchingMovies(false);
             console.error(`Please check: ${err}`);
         }
     };
@@ -41,6 +47,7 @@ export default function MoviesButton({setRows}: MoviesButtonTypes) {
                     key={movieName}
                     data-moviename={movieName}
                     onClick={handleButtonClick}
+                    disabled={isFetchingMovies}
                 >
                     {movieName}
                 </Button>
