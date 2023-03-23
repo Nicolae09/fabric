@@ -1,4 +1,4 @@
-import {fireEvent, render, screen, act, waitFor} from '@testing-library/react';
+import {render, fireEvent, screen, act, waitFor} from '@testing-library/react';
 import MoviesButton from './MoviesButton';
 import {movieNames} from './MoviesButton.config';
 
