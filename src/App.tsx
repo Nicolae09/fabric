@@ -31,6 +31,7 @@ const columnsMap: GridColDef[] = [
                 : <Skeleton
                     height={'100%'}
                     width={'100%'}
+                    data-testid={'skeleton'}
                 />
     },
     { field: 'title', headerName: 'Title', width: 500 },
@@ -49,7 +50,7 @@ function App() {
             <DataGrid
                 rows={rows}
                 columns={columnsMap}
-                style={{ height: 500, width: '100%' }}
+                className={'movie-grid'}
             />
         </Container>
     );
