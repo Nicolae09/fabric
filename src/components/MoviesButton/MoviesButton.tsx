@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import './MoviesButton.scss';
 import {MoviesButtonTypes, MoviesResponse} from './MoviesButton.types';
 import {MoviesTypes, DataGridRowsTypes} from 'globalTypes';

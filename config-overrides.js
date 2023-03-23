@@ -7,6 +7,6 @@ module.exports = function override(config) {
             ...config.alias,
             ...aliases
         }
-    }
+    };
     return config;
-}
+};
