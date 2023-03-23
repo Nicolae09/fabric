@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import './App.scss';
 import {DataGridRowsTypes} from 'globalTypes';
 
@@ -11,7 +11,7 @@ import {
 import {MoviesButton} from 'components/MoviesButton';
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 
-export const columnsMap: GridColDef[] = [
+const columnsMap: GridColDef[] = [
     {
         field: 'image',
         headerName: 'Poster',

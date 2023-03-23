@@ -22,7 +22,7 @@ export default function MoviesButton({setRows}: MoviesButtonTypes) {
             }: MoviesResponse = await (await fetch(`http://localhost:3500/request-movie?movieName=${moviename}`))
                 .json();
 
-            if (Response !== 'True') throw new Error('Something happened...');
+            if (Response !== 'True') throw 'Response returned False';
 
             const generatedRows: DataGridRowsTypes[] = movies.map(({Poster, Title, Type, imdbID, Year}: MoviesTypes) => (
                 {image: Poster, title: Title, type: Type, id: imdbID, year: Year}
@@ -44,8 +44,8 @@ export default function MoviesButton({setRows}: MoviesButtonTypes) {
         >
             {movieNames.map((movieName: string) => (
                 <Button
-                    key={movieName}
                     data-moviename={movieName}
+                    key={movieName}
                     onClick={handleButtonClick}
                     disabled={isFetchingMovies}
                 >
